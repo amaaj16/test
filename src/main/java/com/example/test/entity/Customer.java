@@ -1,9 +1,7 @@
 package com.example.test.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,19 +11,20 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "Clientes")
-@Data
-@NoArgsConstructor
+@Table(name = "CLIENTES")
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Customer implements Serializable {
 
     @Id
-    @Column(name = "id_cliente",nullable = false, columnDefinition = "int")
+    @Column(name = "ID_CLIENTE",nullable = false, columnDefinition = "int")
     private Integer id;
 
-    @Column(name = "nombre",nullable = false,columnDefinition = "varchar(50)")
+    @Column(name = "NOMBRE",nullable = false,columnDefinition = "varchar(50)")
     private String name;
-    @Column(name = "activo",columnDefinition = "bit default 1")
+    @Column(name = "ACTIVO",columnDefinition = "bit default 1")
     private Byte active;
 
 

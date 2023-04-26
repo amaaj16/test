@@ -1,15 +1,16 @@
 package com.example.test.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "lista_compra_detalle")
-@Data
-@NoArgsConstructor
 public class DetailsShoppingList implements Serializable {
 
 
@@ -18,10 +19,11 @@ public class DetailsShoppingList implements Serializable {
     @Column(name = "idLista", nullable = false,columnDefinition = "int")
     private Integer idShoppingList;
 
+
     @Column(name = "codigo_producto",nullable = false,columnDefinition = "int")
     private Integer productCode;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "id_lista_compra",nullable = false)
     private ShoppingList shoppingList;
 
@@ -29,7 +31,7 @@ public class DetailsShoppingList implements Serializable {
     @JoinColumn(name = "product_id_producto", nullable = false)
     private Product product;
 
-    @Column(name = "cantidad",nullable = true,columnDefinition = "int")
+    @Column(name = "cantidad", columnDefinition = "int")
     private int quantity;
 
 }

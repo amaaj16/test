@@ -7,25 +7,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Productos")
-@Data
-@NoArgsConstructor
+@Table(name = "PRODUCTOS")
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Product implements Serializable {
 
 
     @Id
-    @Column(name = "id_product", nullable = false,columnDefinition = "int")
+    @Column(name = "ID_PRODUCTO", nullable = false,columnDefinition = "int")
     private Integer idProduct;
 
-    @Column(name = "clave", nullable = false,columnDefinition = "varchar(15)")
+    @Column(name = "CLAVE", nullable = false,columnDefinition = "varchar(15)")
     private String clave;
 
 
-    @Column(name = "descripcion", nullable = true,columnDefinition = "varchar(150)")
+    @Column(name = "DESCRIPCION", columnDefinition = "varchar(150)")
     private String description;
 
-    @Column(name = "activo",columnDefinition = "bit")
+    @Column(name = "ACTIVO",columnDefinition = "bit")
     private byte active;
 
 

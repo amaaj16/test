@@ -1,0 +1,123 @@
+openapi: "3.0.3"
+info:
+  title: "test API"
+  description: "test API"
+  version: "1.0.0"
+servers:
+  - url: "https://test"
+paths:
+  /api/v1/shopping:
+    post:
+      summary: "POST api/v1/shopping"
+      operationId: "addList"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DetailsShoppingListDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseEntity"
+  /api/v1/shopping/customer/{idCustomer}/lists:
+    get:
+      summary: "GET api/v1/shopping/customer/{idCustomer}/lists"
+      operationId: "getListById"
+      parameters:
+        - name: "idCustomer"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseEntity"
+  /api/v1/shopping/customers/lists/{idList}:
+    put:
+      summary: "PUT api/v1/shopping/customers/lists/{idList}"
+      operationId: "updateList"
+      parameters:
+        - name: "idList"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DetailsShoppingListDTO"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseEntity"
+  /api/v1/shopping/lists/{idList}:
+    delete:
+      summary: "DELETE api/v1/shopping/lists/{idList}"
+      operationId: "deleteList"
+      parameters:
+        - name: "idList"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ResponseEntity"
+components:
+  schemas:
+    ShoppingItem:
+      type: "object"
+      properties:
+        productId:
+          type: "integer"
+          format: "int32"
+        quantity:
+          type: "integer"
+          format: "int32"
+    ShoppingListDTO:
+      type: "object"
+      properties:
+        customerId:
+          type: "integer"
+          format: "int32"
+        NameList:
+          type: "string"
+        items:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ShoppingItem"
+    DetailsShoppingListDTO:
+      type: "object"
+      properties:
+        shoppingLists:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ShoppingListDTO"
+    HttpHeaders:
+      type: "object"
+      properties: { }
+    ResponseEntity:
+      type: "object"
+      properties:
+        headers:
+          $ref: "#/components/schemas/HttpHeaders"

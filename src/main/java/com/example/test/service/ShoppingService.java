@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface ShoppingService {
 
-    List<DetailsShoppingList> addList(DetailsShoppingListDTO shoppingListDTO);
+    List<DetailsShoppingList> addList(DetailsShoppingListDTO detailsShoppingListDTO);
 
-    List<DetailsShoppingListDTO> getList(int idCustomer);
+    DetailsShoppingListDTO getList(int idCustomer);
 
-    DetailsShoppingListDTO updateShoppingList(DetailsShoppingListDTO shoppingList);
+    DetailsShoppingListDTO updateShoppingList(DetailsShoppingListDTO shoppingList,int idList);
 
     int deleteList(int ShoppingListId);
 }

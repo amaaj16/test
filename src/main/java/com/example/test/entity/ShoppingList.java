@@ -1,25 +1,26 @@
 package com.example.test.entity;
 
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 @Table(name = "lista_compras")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class ShoppingList implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idLista",columnDefinition = "int")
+    @Column(name = "id_List",columnDefinition = "int")
     private Integer idList;
 
     @ManyToOne
